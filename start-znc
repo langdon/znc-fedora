@@ -1,5 +1,4 @@
 #! /usr/bin/env bash
-
 # Options.
 DATADIR="/znc-data"
 
@@ -22,7 +21,7 @@ if [ -d "${DATADIR}/modules" ]; then
   for module in $modules; do
     cd "$(dirname "$module")"
     znc-buildmod "$module"
-    make install
+#    make install
   done
 
   # Go back to original directory.
