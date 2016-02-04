@@ -28,6 +28,9 @@ if [ -d "${DATADIR}/modules" ]; then
   cd "$cwd"
 fi
 
+#copy config files from src to data dir
+cp -Rf /src/configs $DATADIR/
+
 # Create default config if it doesn't exist
 if [ ! -f "${DATADIR}/configs/znc.conf" ]; then
   mkdir -p "${DATADIR}/configs"
@@ -37,6 +40,9 @@ fi
 # Make sure $DATADIR is owned by znc user. This effects ownership of the
 # mounted directory on the host machine too.
 chown -R znc:znc "$DATADIR"
+
+# Unfortunately we can't make a pem file without user interaction, hmmm
+sudo -u znc znc --makepem --foreground --datadir="$DATADIR" $@
 
 # Start ZNC.
 exec sudo -u znc znc --foreground --datadir="$DATADIR" $@
