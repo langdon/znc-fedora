@@ -34,7 +34,7 @@ CMD         [""]
 # docker build -t ${USER}/znc .
 #
 # you may need to run
-# docker run -it  -v /tmp/znc-data:/znc-data --entrypoint "/bin/bash" test/znc
+# docker run -it  -v /mnt/znc-data:/znc-data --entrypoint "/bin/bash" ${USER}/znc
 # then /usr/local/bin/start-vnc to generate a pem file if you already have configs
 # then exit and...
 #
